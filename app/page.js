@@ -60,7 +60,7 @@ export default function Home() {
         {/* Interactive Badge */}
         <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse">
           <Sparkles className="h-3.5 w-3.5" />
-          Powered by Gemini 2.5 & Imagen 3
+          Multi-Model AI Video Generator
         </div>
 
         {/* Hero Title */}
@@ -95,17 +95,22 @@ export default function Home() {
 
         {/* Video Mockup Visual */}
         <div className="mt-20 relative w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white/40 backdrop-blur-md p-2">
-          <div className="bg-gray-950 aspect-video rounded-2xl flex items-center justify-center relative overflow-hidden group">
-            {/* Animated Canvas grid line mockup */}
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
-            
-            {/* Logo Center icon */}
-            <div className="relative flex flex-col items-center justify-center p-6 text-center">
-              <div className="rounded-2xl bg-white/10 backdrop-blur-md p-4 text-white hover:scale-110 transition-transform cursor-pointer">
-                <Video className="h-10 w-10 animate-bounce text-indigo-400" />
+          <div className="bg-gray-950 aspect-video rounded-2xl relative overflow-hidden group">
+            <video 
+              className="absolute inset-0 w-full h-full object-cover" 
+              src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1611-large.mp4"
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+            />
+            {/* Dark overlay with player info that fades on hover */}
+            <div className="absolute inset-0 bg-black/45 flex flex-col items-center justify-center p-6 text-center group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+              <div className="rounded-2xl bg-white/10 backdrop-blur-md p-4 text-white">
+                <Video className="h-10 w-10 text-indigo-400 animate-pulse" />
               </div>
               <h3 className="mt-4 text-lg font-bold text-white">Waffle Studio Player</h3>
-              <p className="text-xs text-gray-400 max-w-xs mt-1">Select topic prompts, styles, and generate. Fully dynamic vertical content renderer.</p>
+              <p className="text-xs text-gray-300 max-w-xs mt-1">Select topic prompts, styles, and generate. Click "Start Generating Free" to build your own.</p>
             </div>
           </div>
         </div>
@@ -127,7 +132,7 @@ export default function Home() {
               </div>
               <h3 className="font-bold text-lg text-gray-900">AI Scripting</h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Gemini AI crafts custom, cohesive script scenes complete with image style prompts and narrator voiceover texts.
+                Advanced AI models (Gemini, ChatGPT, or Claude) craft custom, cohesive script scenes complete with image style prompts and narrator voiceover texts.
               </p>
             </div>
 
@@ -138,7 +143,7 @@ export default function Home() {
               </div>
               <h3 className="font-bold text-lg text-gray-900">Breathtaking Visuals</h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                Imagen 3 generates 9:16 aspect ratio scene artwork corresponding to your designated topic and creative art styles.
+                Advanced image models (Imagen 3 or DALL-E 3) generate 9:16 aspect ratio scene artwork corresponding to your designated topic and creative art styles.
               </p>
             </div>
 
@@ -175,7 +180,7 @@ export default function Home() {
           </div>
           <h2 className="text-3xl font-bold mb-4">Your Keys. Your Privacy.</h2>
           <p className="text-gray-400 text-base max-w-xl mx-auto mb-8">
-            Unlike other platforms, Waffle Studio never stores your secret API credentials on our servers. Your Gemini and Text-to-Speech keys are kept exclusively inside your browser local storage.
+            Unlike other platforms, Waffle Studio never stores your secret API credentials on our servers. Your AI and Text-to-Speech keys are kept exclusively inside your browser local storage.
           </p>
           <div className="flex justify-center gap-6 text-xs text-gray-500">
             <span className="flex items-center gap-1.5"><Zap className="h-4 w-4 text-primary" /> Encrypted browser headers</span>
@@ -187,7 +192,6 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-100 py-10 px-6 text-center text-xs text-gray-400">
         <p>© {new Date().getFullYear()} Waffle Studio. All rights reserved.</p>
-        <p className="mt-1">Powered by Next.js, Clerk, and Google Generative AI.</p>
       </footer>
 
     </div>

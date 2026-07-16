@@ -69,6 +69,17 @@ function CreateNew() {
       return;
     }
 
+    // Since Anthropic (Claude) does not generate images, ensure we have an image generation key (Gemini or OpenAI)
+    const geminiKey = localStorage.getItem('waffle_gemini_key') || '';
+    const openaiKey = localStorage.getItem('waffle_openai_key') || '';
+    if (!geminiKey && !openaiKey) {
+      showAlert(
+        "Image Generator Key Missing",
+        "An API key for either Gemini (Imagen 3) or OpenAI (DALL-E 3) is required to generate the video artwork. Please configure one in the settings modal."
+      );
+      return;
+    }
+
     let voiceKey = '';
     if (selectedVoice === 'gcp') {
       voiceKey = localStorage.getItem('waffle_tts_key') || '';
@@ -125,9 +136,24 @@ function CreateNew() {
 
         // Generate scene visual image
         setStatusText(`[Scene ${i + 1}/${scenes.length}] Creating scene artwork visual...`);
+        
+        // Detect available image generation provider (prefer Gemini Imagen, fallback to OpenAI DALL-E)
+        let imageProvider = 'gemini';
+        let imageKey = geminiKey;
+        
+        if (!geminiKey && openaiKey) {
+          imageProvider = 'openai';
+          imageKey = openaiKey;
+        }
+
         const imageResp = await axios.post('/api/generate-image',
           { prompt: scene.imagePrompt, style: formData.imageStyle },
-          { headers: { 'x-gemini-key': localStorage.getItem('waffle_gemini_key') || '' } }
+          { 
+            headers: { 
+              'x-image-provider': imageProvider,
+              'x-image-key': imageKey 
+            } 
+          }
         );
         const imageBytes = imageResp.data.imageBytes;
         const imageUrl = `data:image/jpeg;base64,${imageBytes}`;

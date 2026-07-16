@@ -30,7 +30,7 @@ export default function Page() {
                 🪄
               </div>
               <div>
-                <h4 className="font-bold text-sm">Gemini AI Scripting</h4>
+                <h4 className="font-bold text-sm">Multi-Model AI Scripting</h4>
                 <p className="text-xs text-gray-400">Contextual story outline and scene prompt generation.</p>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function Page() {
                 🎨
               </div>
               <div>
-                <h4 className="font-bold text-sm">Imagen 3 Generation</h4>
+                <h4 className="font-bold text-sm">AI Image Generation</h4>
                 <p className="text-xs text-gray-400">Vertical art canvases aligned with scene prompts.</p>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function Page() {
 
         {/* Footer info */}
         <div className="text-xs text-gray-400">
-          Powered by Gemini 2.5 & Google Cloud APIs.
+          AI Powered & Google Cloud APIs.
         </div>
       </div>
 
