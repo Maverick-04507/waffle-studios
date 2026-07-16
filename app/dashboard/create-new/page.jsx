@@ -127,7 +127,7 @@ function CreateNew() {
         setStatusText(`[Scene ${i + 1}/${scenes.length}] Creating scene artwork visual...`);
         const imageResp = await axios.post('/api/generate-image',
           { prompt: scene.imagePrompt, style: formData.imageStyle },
-          { headers: { 'x-gemini-key': selectedAI === 'gemini' ? apiKey : localStorage.getItem('waffle_gemini_key') || apiKey } }
+          { headers: { 'x-gemini-key': localStorage.getItem('waffle_gemini_key') || '' } }
         );
         const imageBytes = imageResp.data.imageBytes;
         const imageUrl = `data:image/jpeg;base64,${imageBytes}`;

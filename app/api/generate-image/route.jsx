@@ -4,7 +4,7 @@ import { GoogleGenAI } from '@google/genai';
 export async function POST(req) {
   try {
     const { prompt, style } = await req.json();
-    const apiKey = req.headers.get('x-gemini-key');
+    const apiKey = req.headers.get('x-gemini-key') || process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(
